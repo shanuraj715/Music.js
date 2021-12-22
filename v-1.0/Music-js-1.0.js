@@ -71,9 +71,6 @@ class MJS {
 
 		// keyboard key listning
 		if (this.#kb) document.addEventListener('keypress', this.#keyListen)
-		setInterval( () => {
-			console.log(this.#playing, this.#paused, this.#stopped, this.#pifq)
-		}, 1000)
 	}
 
 	// ----------------------------------------------------
@@ -273,32 +270,32 @@ class MJS {
 
 	repeatAB = (from, to) => {
 		if (isNaN(from)){
-			this.#el ? console.error("") : null
+			this.#el ? console.error("\"RepeatAB()\" method takes only integer parameters.") : null
 			return
 		}
 
 		if (isNaN(to)){
-			this.#el ? console.error("") : null
+			this.#el ? console.error("\"RepeatAB()\" method takes only integer parameters.") : null
 			return
 		}
 		
 		if (parseInt(from) >= this.#ao.duration){
-			this.#el ? console.error("") : null
+			this.#el ? console.error("Value of starting position of method \"repeatAB()\" is greater than the duration of the audio.") : null
 			return
 		}
 
 		if (parseInt(to) > this.#ao.duration){
-			this.#el ? console.error("") : null
+			this.#el ? console.error("Value of ending position of method \"repeatAB()\" is greater than the duration of the audio.") : null
 			return
 		}
 
 		if (parseInt(from) === parseInt(to)){
-			this.#el ? console.error("") : null
+			this.#el ? console.error("Value of starting position and ending position is equal in method \"repeatAB()\"") : null
 			return
 		}
 
 		if (from > to){
-			this.#el ? console.error("") : null
+			this.#el ? console.error("Value of starting position is greater than the ending position of method \"repeatAB()\"") : null
 			return
 		}
 
@@ -417,7 +414,6 @@ class MJS {
 	// PRIVATE METHOD
 	#keyListen = e => {
 		let key = e.which
-		console.log(key)
 		switch (key) {
 			case 115: // s => stop the audio
 				this.stop()
@@ -444,12 +440,10 @@ class MJS {
 				break
 
 			case 43: // + button
-				console.log(this.getVolumeLevel())
 				this.setVolume(this.getVolumeLevel() + 10)
 				break
 
 			case 45: // - (Minus) button
-				console.log(this.getVolumeLevel())
 				this.setVolume(this.getVolumeLevel() - 10)
 				break
 
