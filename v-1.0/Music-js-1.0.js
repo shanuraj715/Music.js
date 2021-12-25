@@ -67,7 +67,7 @@ class MJS {
 		this.#el = obj.errorLog === undefined ? true : obj.errorLog
 		this.#pc = obj.continuePlay === undefined ? true : obj.continuePlay
 		this.#cq = obj.customOueue === undefined ? true : obj.customOueue
-		this.#kb = obj.keyBind === undefined ? true : obj.keyBind
+		this.#kb = obj.keyBind === undefined ? false : obj.keyBind
 
 		// keyboard key listning
 		if (this.#kb) document.addEventListener('keypress', this.#keyListen)
@@ -432,7 +432,7 @@ class MJS {
 				break
 
 			case 114: // r => repeat one
-				this.repeat()
+				this.repeat(!this.#ao.loop)
 				break
 
 			case 32: // space bar => pause and play audio

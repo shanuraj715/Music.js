@@ -11,7 +11,7 @@
  *   | --- CODE AVAILABILITY: Plain Code, Minified, Encrypted (HEX) --- |
  *   |------------------------------------------------------------------|
  */
-class MJS{#el=!0
+ class MJS{#el=!0
 #pc=!0
 #cq=!1
 #kb=!0
@@ -35,7 +35,7 @@ return}
 this.#el=obj.errorLog===undefined?!0:obj.errorLog
 this.#pc=obj.continuePlay===undefined?!0:obj.continuePlay
 this.#cq=obj.customOueue===undefined?!0:obj.customOueue
-this.#kb=obj.keyBind===undefined?!0:obj.keyBind
+this.#kb=obj.keyBind===undefined?!1:obj.keyBind
 if(this.#kb)document.addEventListener('keypress',this.#keyListen)}
 #setAudState=audState=>{switch(audState){case "play":this.#playing=!0
 this.#paused=!1
@@ -166,7 +166,7 @@ case 110:this.next()
 break
 case 109:this.mute(!this.#muted)
 break
-case 114:this.repeat()
+case 114:this.repeat(!this.#ao.loop)
 break
 case 32:this.toggle()
 break
